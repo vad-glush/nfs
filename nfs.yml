@@ -1,0 +1,7 @@
+---
+- name: install and config nfs
+  hosts: all
+  become: true
+
+  roles:
+    - nfs

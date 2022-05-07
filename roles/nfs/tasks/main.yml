@@ -1,0 +1,54 @@
+---
+# tasks file for nfs
+- name: Install nfs-utils
+  become: true
+  yum:
+    name: nfs-utils
+    state: present
+  tags: install
+- name: Start and anable service nfs-utils
+  systemd:
+    name: nfs-utils
+    enabled: yes
+    state: started
+- name: Start and anable service rpcbind 
+  systemd:
+    name: rpcbind
+    enabled: yes
+    state: started
+- name: Creates directory for share
+  file:
+    path: "{{ share }}"
+    mode: 0777 
+    state: directory
+- name: Change exports config file
+  template:
+    src: exports.j2
+    dest: /etc/exports
+    mode: 0644
+- name: Re-export the share
+  command: exportfs -rav
+  notify:
+    - restart nfs-utils
+
+- name: permit traffic to nfs
+  ansible.posix.firewalld:
+    service: nfs
+    permanent: yes
+    state: enabled
+  notify:
+    - restart firewalld
+- name: permit traffic to rpc-bind
+  ansible.posix.firewalld:
+    service: rpc-bind
+    permanent: yes
+    state: enabled
+  notify:
+    - restart firewalld
+- name: permit traffic to mountd
+  ansible.posix.firewalld:
+    service: mountd
+    permanent: yes
+    state: enabled
+  notify:
+    - restart firewalld

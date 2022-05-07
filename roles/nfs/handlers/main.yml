@@ -1,0 +1,6 @@
+---
+# handlers file for nfs
+- name: restart nfs-utils
+  service: name=nfs-server state=restarted
+- name: restart firewalld
+  service: name=firewalld state=restarted
