@@ -1,7 +1,7 @@
 
 ## Развертывание NFS  службы и настройка firewalld
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/)
 
 ##### Конечно поменять на свой inventory.yml файл
 Заменить в файле /nfs/roles/default/main.yml 
