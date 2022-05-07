@@ -35,5 +35,5 @@ A brief description of what this project does and who it's for
 > P.S.: Для подключение NFS шары на windows, необходиму установить поддержку nfs client, затем подключить шару:
 ```mount -o anon \\IP\Путь_указанный_в_{{ share }} T:```
 
-Отключение всех дисков 
+> Отключение всех дисков 
 ```umount -f -f```
