@@ -11,6 +11,12 @@
     name: nfs-utils
     enabled: yes
     state: started
+- name: Start and anable service nfs-server
+  systemd:
+    name: nfs-server
+    enabled: yes
+    state: started
+
 - name: Start and anable service rpcbind 
   systemd:
     name: rpcbind
